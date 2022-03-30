@@ -1,0 +1,39 @@
+ 
+<div [ngSwitch]="orderDisplay">   
+  <div class="container" align="center">  
+  <div  align="center" class="card" style="background-color: #c9c9ce;height:230px;width:400px"> 
+  <div class="card-header">
+  <h3 style="background-color:rgb(72, 73, 92); color:darkgoldenrod; padding:5px;">
+  <i > Return Car  </i></h3>
+  <input [(ngModel)]="PlateNumber" type="text" class="form-control" placeholder="Enter Plate Number"> 
+  <br>
+  <button  (click)="checkPlate()" class="btn btn-success ">Check Plate Number</button>  
+  <br>
+  <br>
+  <h5 class="error" *ngIf="Error===true">Plate Number Does Not Match</h5>
+  </div>
+</div>   
+
+<div *ngSwitchCase="'Display'">
+ <div class="container" align="center">  
+ <div  align="center" class="card" style="background-color: #c9c9ce;height:400px;width:400px"> 
+ <div class="card-header">
+ <h3 style="background-color:rgb(72, 73, 92); color:rgb(168, 214, 83); padding:5px;">
+ <i > Order Summery  </i></h3>  
+ <div align="left">
+ <h5> <u>Car Model -</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{CarModel}}</h5> 
+ <h5> <u>Plate Number -</u>&nbsp;{{PlateNumber}}</h5>  
+ <h5> <u>Late Fee -</u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{LateDays}}$</h5>  
+ <h5> <u>Price For Rent -</u>&nbsp;{{FullPrice}}$</h5> 
+</div>
+<br><br>
+<br><br>
+<br>
+  <button  (click)="returnCar()" class="btn btn-danger ">Return Car</button> 
+</div>
+</div> 
+</div> 
+</div>
+
+  
+ 

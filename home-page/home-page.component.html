@@ -1,0 +1,46 @@
+ 
+ <br>
+ <div class="container" >  
+  <div class="col-lg-12">
+  <div style="background-color: #cccccc;">  
+  <div class="header">
+  <div class="header-text">
+  <div class="card card-primary" style="height:200px">
+  <div class="card-header">
+  <h3 style="background-color:rgb(26, 54, 78); color:darkorange; padding:10px;">
+   <i > Welcome To AutoDeal  </i></h3>
+ </div>
+ <div class="card-block" style="background-color:rgb(237, 237, 238); color:rgb(26, 54, 78); padding:10px;">
+  <h5>Welcome to AutoDeal , The leading Website for car Rental</h5>   
+  <h5>We Hope you will enjoy our Website</h5>   
+  <h5>You can view our cars on Car page</h5>      
+  <h5>You have to be register to make an Order</h5>   
+  <h5>Thank you for choosing us</h5>   
+  <h5>AutoDeal</h5>     
+  <div *ngIf="contact"> 
+      <div class="container col-lg-12" >  
+          <div align="center" class="card" style="background-color: #fafafa;;">
+          <div class="card-header">  
+          <h3 style="background-color:rgb(44, 109, 79); color:rgb(190, 185, 185); padding:5px;">
+          <i >  Contact Us  </i></h3> 
+     </div> 
+
+     <h5><u>we located in-</u></h5> {{Branch[0].Adress}} : {{Branch[0].BranchName}}
+     <agm-map [latitude]="lat" [longitude]="lng"> 
+     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+     </agm-map>
+     </div>
+    </div>
+  </div>
+  <br>
+   <input  type="button" (click)="Contact()" class="btn btn-primary" value="Contact Us "> 
+ </div>
+ </div> 
+
+
+ 
+      
+   
+   
+ 
+ 

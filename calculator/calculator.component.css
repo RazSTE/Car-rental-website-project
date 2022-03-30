@@ -1,0 +1,32 @@
+label{ 
+    color:rgb(190, 185, 185)
+ }
+ .container 
+ { 
+     padding-left: 200px; 
+ } 
+ .i 
+ { 
+     color: rgb(245, 241, 241);
+ } 
+ .card-img-top {
+    width: 11vw;
+    height: 8vw;
+    align-items: auto ;
+ }  
+.border
+ { 
+    border: 5px solid red;
+ } 
+ .space_lg
+{
+width:300px;
+} 
+p 
+{ 
+    color: darkred ;
+} 
+.price 
+{ 
+    color: rgb(38, 167, 76)
+} 

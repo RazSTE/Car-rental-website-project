@@ -1,0 +1,41 @@
+label{ 
+    color:darkorange
+ }
+ .container 
+ { 
+     padding-left: 200px; 
+ } 
+ .i 
+ { 
+     color: rgb(245, 241, 241); 
+     
+ } 
+ .card-img-top {
+    width: 11vw;
+    height: 8vw;
+    align-items: auto ;
+ }   
+ .card-body{  
+    width: 5rem  
+    height
+ } 
+ i
+ { 
+ font-size: 13px    
+ } 
+ footer { 
+     
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; 
+    height:55px ;
+    background-color:rgb(72, 73, 92) ;
+    color: white;
+    text-align:center;
+} 
+.space_lg
+{
+width:30px;
+} 
+ 

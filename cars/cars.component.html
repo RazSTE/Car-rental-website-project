@@ -1,0 +1,81 @@
+<div   style = "background-color:rgb(26, 54, 78)">
+  <div style = "padding-left: 20px"  
+       class = "row">
+   <h5 style="color:darkorange">Sort Cars &nbsp; </h5>  
+   
+<div>
+   <input  
+   class="txt"
+   [(ngModel)]="search_input" 
+   placeholder="Free-Search" >  
+</div> 
+  <label> 
+      &nbsp;  Year   &nbsp;     
+  </label>
+   <select  name="year" [(ngModel)]="search_input"> 
+     <option value=""></option>
+     <option *ngFor="let car of (carModelList | unique : '1')" >{{car.Year}}</option>
+   </select>  
+   <label> &nbsp;  Manufactor &nbsp; </label> 
+   <select  name="manufactor" [(ngModel)]="search_input">  
+     <option value=""></option>
+     <option *ngFor="let car of (carModelList | unique : '2')" >{{car.Manufactor}}</option>
+   </select> 
+   <label> &nbsp;  Model &nbsp;  </label> 
+   <select  name="modelname" [(ngModel)]="search_input">  
+     <option value=""></option>
+     <option *ngFor="let car of (carModelList | sortCars:search_input )" >{{car.ModelName}}</option>
+   </select> 
+   <label> &nbsp;  Gear &nbsp;  </label> 
+   <select  name="gear" [(ngModel)]="search_input">  
+     <option value=""></option>
+     <option value="Automatic">Automatic</option> 
+     <option value="Manual">   Manual   </option>
+   </select> 
+   <label> &nbsp;  Start Date  &nbsp;   </label>
+     <input type="date" [(ngModel)] = "startDate" (change)="checkDate()" name = "startdate">  
+   </div>  
+ </div> 
+  
+ 
+  
+   
+       
+<div class  = "card-block " style="padding:10px;"> 
+ <div class = "card-deck" >  
+<div *ngFor = "let car of (carModelList| sortCars:search_input)" 
+      class = "align"  >  
+      
+ <div class="card"> 
+ <img class = "card-img-top" 
+      src   = "http://localhost:51601/Images/{{car.ModelID}}.jpg"  >
+<div class  = "card-body"  >
+ <h6 class  = "card-title"><u>{{car.Manufactor}} {{car.ModelName}}</u></h6>  
+  <i class  = "card-text"><u>Year</u> : {{car.Year}}</i>  
+<br>
+  <i class  = "card-text"><u>Price Per Day</u> : {{car.PricePerDay}}$</i>   
+<br>
+ <i class   = "card-text"><u>Gear</u> : {{car.Gear}}</i> 
+<br>
+<button 
+ (click)      = "userSelectModel(car.ModelID)" 
+ 
+ class        = "btn-sm btn-primary"><i>{{car.Manufactor}} {{car.ModelName}} Price</i>
+</button> 
+</div>
+</div>
+</div> 
+ 
+<div *ngIf="userCarHistory">
+   <footer class="row">  <div class="space_lg">&nbsp;</div> 
+    <h6 style="color:darkgoldenrod"><u>Car You Had interested in :</u></h6> 
+    <div class="space_lg">&nbsp;</div>
+     <div  *ngFor="let car of carModelList"> 
+       <div *ngFor="let history of userCarHistory">
+ <div *ngIf="(car.ModelID ===history)" >&nbsp;<button class="btn btn-success" (click)="userSelectModel(car.ModelID)" ><img src="http://localhost:51601/Images/{{car.ModelID}}.jpg" height="30px" width="40px"><br>{{car.Manufactor}} {{car.ModelName}}</button></div> 
+</div> 
+</div>
+</footer>
+</div> 
+      
+  

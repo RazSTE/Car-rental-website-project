@@ -1,0 +1,41 @@
+<div class="container" >  
+  <div class="row">
+  <div class="col-lg-12">
+  <div style="background-color: #cccccc;">  
+  <div class="header">
+    <div class="header-text">
+  <div class="card card-primary" style="height:320px;">
+  <div class="card-header">
+  <h3 style="background-color:rgb(26, 54, 78); color:darkgoldenrod; padding:10px;">
+   <i > Order Summery   </i></h3>
+ </div>
+ <div class="card-block" style="background-color:rgb(237, 237, 238); color:rgb(26, 54, 78); padding:10px;">
+  <h5><u> Car</u>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     -  {{Order.manufactor}} {{Order.modelName}} 
+  </h5>    
+  <h5><u> Plate Number
+     </u>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     - {{Order.plateNumber}}
+    </h5> 
+  <h5><u> Start Date
+  </u>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+  -   {{Order.startDate | date :'dd/MM/yyyy'}}
+  </h5>   
+  <h5><u> Return Date Date
+  </u> &nbsp;&nbsp;
+  - {{Order.returnDate | date :'dd/MM/yyyy'}}
+  </h5>   
+  <h5><u> Price For This Rent
+  </u> - {{Order.price}}$
+  </h5>   
+  <h5><u> Located in
+  </u> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  - {{Branch[0].Adress}} : {{Branch[0].BranchName}}
+  </h5>
+  <br>  
+  <h5>Thank you for choosing us</h5>   
+  <h5>AutoDeal</h5>         
+   
+  <input  type="button" [routerLink]="['/home']" class="btn btn-primary" value="Return To Home Page "> 
+ </div>

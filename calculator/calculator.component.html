@@ -1,0 +1,73 @@
+
+
+<br>
+<div class=" container row ">
+  <div  class = "card-deck" 
+      style = "background-color: #cccccc;width:850px;"> 
+  <h3 style = "background-color:rgb(26, 54, 78); color:darkgoldenrod; padding:5px;"> 
+  <i><button class="btn btn-danger" [routerLink]="['/cars']"  >X</button> {{CurrentModel.Manufactor}} {{CurrentModel.ModelName}}  Details  </i></h3>   
+  <div class = "row">
+  <div aligen = "left"> &nbsp;&nbsp; &nbsp; 
+  <img src = "http://localhost:51601/Images/{{CurrentModel.ModelID}}.jpg"  
+       height = "160"  
+       width = "200" > 
+</div>  
+
+
+<div aligen="center"> 
+    <h6>-<u> Price Per Day     </u> - {{CurrentModel.PricePerDay}}$    </h6> 
+    <h6>-<u> Price Per Late Day</u> - {{CurrentModel.PriceForLateDay}}$</h6> 
+    <h6>-<u> Gear              </u> - {{CurrentModel.Gear}}            </h6> 
+    <h6>-<u> Year              </u> - {{CurrentModel.Year}}            </h6>
+</div>  
+
+&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+                  
+<form >   
+    <h6>Rent Date - </h6>
+    <input [(ngModel)] = "startDate"   
+           (change)    = "price()" 
+           name        = "startdate"  
+           type        = "date">
+    <br> <br>
+    <h6>Return Date - </h6>
+    <input ngModel 
+           [(ngModel)] = "returnDate" 
+           (change)    = "price()"   
+           name        = "returnDate" 
+           type        = "date"> 
+    <br><br> 
+    <h5><u>Price For Rent -</u><i class="price" >{{rentPrice}}$</i></h5><br>  
+    <button (click)="Rent()" 
+             class="btn btn-success" [disabled]="(allowRent==false)" > Rent <i class="fas fa-shopping-cart"></i> </button>
+ 
+
+
+<div [ngSwitch]="ErrorMassege">  
+  
+ <div align="auto" *ngSwitchCase="'NotRegister'">  
+   <p>You Need To Be Loged-in For Renting A Car</p> 
+   <p>Click Here To Go To <a [routerLink]="['/logIn']" >Log-in Page</a> </p>
+</div>  
+
+<div *ngSwitchCase="'NoAvileableUnit'">  
+  <p>No Avileable Cars ! </p> 
+</div>  
+
+<div *ngSwitchCase="'invalidDate'">  
+  <p>Invalid Dates ! </p> 
+</div>  
+ 
+<div *ngSwitchCase="'smallStartDate'">  
+    <p>Start Date Need To Be From Today <br> (Until Morning) And On  </p> 
+  </div> 
+ 
+</div> 
+</form>
+</div> 
+</div>
+     
+
+
+     
+     
