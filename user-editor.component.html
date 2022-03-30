@@ -1,0 +1,143 @@
+<div class="container" >  
+ <div style="background-color: #cccccc;">  
+ <div class="card card-primary" style="height:600px;">
+ <div class="card-header" align="center">
+ <h3 style="background-color:rgb(72, 73, 92); color:darkgoldenrod; padding:10px;">
+ <i > User Editor   </i></h3>
+ </div>
+
+ <div class="card-block" style="background-color:rgb(237, 237, 238); color:rgb(26, 54, 78); padding:10px;"> 
+ <div class="row">
+ <div style="width:400px;height:500px;overflow: scroll;"> 
+ <ul> 
+ <li>
+   <button 
+   (click)="addOption()" 
+    class="btn btn-warning">Add User 
+   <i class="fas fa-user-plus"></i> 
+   </button>
+   </li>
+ </ul>
+
+<div *ngFor="let user of UserList">   
+ <ul> 
+ <li> 
+
+ <button (click)="editLoader(user.UserID)" >              Edit 
+ <i class="fas fa-user-edit"></i>
+ </button> 
+
+ <button (click)="deletUser(user.UserID , user.Position)">Delet
+ <i class = "fas fa-trash-alt"></i>
+ </button><u> {{user.UserName}}</u> - {{user.Position}} 
+ </li>
+ </ul>  
+ </div>
+ </div>  
+
+ <div class="space_lg">&nbsp;</div> 
+
+<div *ngIf="addUser===false">
+
+ <form>   
+  <label><U>User ID -</U> </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="text" [ngModel]="userID"    name="userID" >         <br>
+  <label><U>First Name -</U> </label>&nbsp;&nbsp;
+  <input type="text" [(ngModel)]="FirstName" name="FirstName" >    <br> 
+  <label><U>Last Name -</U> </label>&nbsp;&nbsp;
+  <input type="text" [(ngModel)]="LastName"  name="LastName" >     <br> 
+  <label><U>User Name -</U> </label>&nbsp;
+  <input type="text" [(ngModel)]="UserName"  name="UserName" >     <br> 
+  <label><U>Password -</U> </label>&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="text" [(ngModel)]="Password" name="Password" >      <br> 
+  <label><U>Email -</U> </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="text" [(ngModel)]="Email" name="Email" ><br>
+  <div class="row">    &nbsp;&nbsp;&nbsp;&nbsp;
+  <label><U>Birth Date -</U> </label>&nbsp;&nbsp;&nbsp; 
+  <i>{{BirthDate |date :'dd/MM/yyyy' }}</i><br>  &nbsp;&nbsp;&nbsp;
+  <br>
+  </div> 
+  <input type="date" [(ngModel)]="BirthDate" name="BirthDate" ><br> 
+  <br>
+  <label><U>Current Gender -</U>  {{Gender}} </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <br> 
+  <button (click)="genderButton('Male')"   class="btn"  name="gender"  > Male</button> &nbsp; &nbsp;
+  <button (click)="genderButton('Female')" class="btn"  name="gender" > Female</button><br>
+           
+  <label><U>Current Position -</U>  {{Position}} </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  <button (click)="poitionButton('user')"     class="btn"  name="gender"  > User </button> &nbsp; &nbsp; 
+  <button (click)="poitionButton('employee')" class="btn"  name="gender"  > Employee </button> &nbsp; &nbsp;
+  <button (click)="poitionButton('maneger')"  class="btn"  name="gender" >  Maneger</button><br>
+         
+  <label><u>Photo</u></label><br>
+  <img  src="http://localhost:51601/images/{{userID}}.jpg" hight="50" width="50" >  
+  <input type="file" #Photo [(ngModel)]="pic" (change)="picload($event)" name="pic" accept="image/*">
+  <br>  
+  <button (click)="editUser()" class="btn btn-success"> Save Changes <i class="far fa-save"></i></button> &nbsp;&nbsp;&nbsp;
+  <button (click)="clearUser()" class="btn btn-danger"> Clear User <i class="fas fa-sync-alt"></i></button>
+</form>  
+</div>  
+
+<div *ngIf="addUser===true">   
+  <h5><u>Add New User</u></h5>
+  <form>   
+  <label><U>User ID -</U> </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="text"  [(ngModel)]="userID" (change)="checkID()"  name="userID" > 
+  <br> 
+  <div *ngIf="errorId" >
+  <i style="color:red">ID Allrady Exists OR Contain Lettrs OR Less Then 3 Digits</i> 
+  <br>
+  </div>
+  <label><U>First Name -</U> </label>&nbsp;&nbsp;
+  <input type="text" [(ngModel)]="FirstName"  name="FirstName" >    
+  <br> 
+  <label><U>Last Name -</U> </label>&nbsp;&nbsp;
+  <input type="text"  [(ngModel)]="LastName" name="LastName" >    
+  <br> 
+  <label><U>User Name -</U> </label>&nbsp;
+  <input type="text"  [(ngModel)]="UserName" name="UserName" >  
+  <br> 
+  <label><U>Password -</U> </label>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <input type="text" [(ngModel)]="Password" name="Password" >      
+  <br> 
+  <label><U>Email -</U> </label>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <input  type="text" [(ngModel)]="Email" name="Email"  >
+  <br>
+  <div class="row">   
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <label><U>Birth Date -</U> </label>
+  &nbsp;&nbsp;&nbsp; 
+  <input type="date" [(ngModel)]="BirthDate" name="BirthDate" ><br>
+  <br>
+  </div>      
+  <br>       
+ <label><U> Gender -</U> {{Gender}}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ <br>             
+ <button (click)="genderButton('Male')" class="btn"  name="gender"  > Male</button> 
+ &nbsp; &nbsp;
+ <button (click)="genderButton('Female')" class="btn"  name="gender" > Female</button>
+ <br>            
+  <label><U> Position -</U> {{Position}}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br>
+  <button (click)="poitionButton('user')"  class="btn"  name="gender"  > User </button> 
+  &nbsp; &nbsp; 
+  <button (click)="poitionButton('employee')"   class="btn"  name="gender"  > Employee </button>
+   &nbsp; &nbsp;
+  <button (click)="poitionButton('maneger')" class="btn"  name="gender" > Maneger</button>
+  <br>
+  <br>  
+  <input type="file" #Photo [(ngModel)]="pic" (change)="picload($event)" name="pic" accept="image/*">
+  <br>  
+  <button 
+   (click)="submitNewUser()" [disabled]="(errorId===true)" class="btn btn-success"> ADD User <i class="fas fa-user-edit"></i>
+  </button> 
+  &nbsp;&nbsp;&nbsp;
+  <button 
+   (click)="clearUser()" class="btn btn-danger"> Clear Fields <i class="fas fa-sync-alt"></i>
+  </button>
+  </form>
+  </div>
+  </div> 
+  </div>  
+    
